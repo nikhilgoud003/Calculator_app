@@ -74,7 +74,8 @@ class _CalculatorState extends State<Calculator> {
       output = double.parse(_output).toStringAsFixed(2);
     });
   }
- Widget buildButton(String buttonText, {bool isOperator = false}) {
+
+  Widget buildButton(String buttonText, {bool isOperator = false}) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.all(10.0),
@@ -96,3 +97,77 @@ class _CalculatorState extends State<Calculator> {
       ),
     );
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Calculator App"),
+      ),
+      backgroundColor: Colors.blue,
+      body: Container(
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 12.0),
+              child: Text(
+                output,
+                style: TextStyle(
+                    fontSize: 48.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ),
+            Expanded(
+              child: Divider(),
+            ),
+            Column(
+              children: [
+                Row(
+                  children: [
+                    buildButton("7"),
+                    buildButton("8"),
+                    buildButton("9"),
+                    buildButton("/", isOperator: true),
+                  ],
+                ),
+                Row(
+                  children: [
+                    buildButton("4"),
+                    buildButton("5"),
+                    buildButton("6"),
+                    buildButton("x", isOperator: true),
+                  ],
+                ),
+                Row(
+                  children: [
+                    buildButton("1"),
+                    buildButton("2"),
+                    buildButton("3"),
+                    buildButton("-", isOperator: true),
+                  ],
+                ),
+                Row(
+                  children: [
+                    buildButton("00"),
+                    buildButton("0"),
+                    buildButton("."),
+                    buildButton("+", isOperator: true),
+                  ],
+                ),
+                Row(
+                  children: [
+                    buildButton("=", isOperator: true),
+                    buildButton("CLEAR"),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
