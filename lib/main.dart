@@ -74,4 +74,25 @@ class _CalculatorState extends State<Calculator> {
       output = double.parse(_output).toStringAsFixed(2);
     });
   }
-}
+ Widget buildButton(String buttonText, {bool isOperator = false}) {
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: ElevatedButton(
+          onPressed: () => buttonPressed(buttonText),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: isOperator ? Colors.orange : Colors.black,
+            foregroundColor: Colors.white,
+            padding: EdgeInsets.all(20.0),
+          ),
+          child: Text(
+            buttonText,
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
